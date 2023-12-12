@@ -18,12 +18,11 @@ for i in range(1,len(my_nums)+1):
 	for j in range(1,len(my_nums)+1):
 		if i==j:
 			total2[i,j] = total2[i,j-1] + 1
-			total2[i+1:int(matches[i][0])+i+1,j] = 1#total2[i,j] + total2[i,j-1]
+			total2[i+1:int(matches[i][0])+i+1,j] = 1
 			total2[i,j:] = total2[i,j]
 		elif total2[i,j] == 0:
 			total2[i,j] = total2[i,j-1]
 		elif total2[i,j] != 0:
-			# total2[i,j:] = total2[i,j]
 			total2[i,j] = total2[i,j-1] + total2[j,j]
 
 print(np.sum(total1))
