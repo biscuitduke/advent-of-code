@@ -16,7 +16,7 @@ Cards = {
     "3": 3,
     "2": 2
 }
-file = 'input'
+file = 'example'
 with open(file) as f:
   Hands = [k for line in f for k, v in [line.strip().split()]]
 with open(file) as f:
@@ -31,8 +31,6 @@ one_pair = []
 high_card = []
 
 for hand in Hands:
-  # sorted_hand = sorted(list(set(hand)), key=Cards.get, reverse=True)
-  # print(sorted_hand)
   power = 0
   count = 0
   max_card = ''
@@ -62,20 +60,17 @@ hand_types = [
     five_of_a_kind, four_of_a_kind, full_house, three_of_a_kind, two_pair,
     one_pair, high_card
 ]
-# print(hand_types)
 
 sorted_list = []
 for hand_type in hand_types:
   hand_type = sorted(hand_type,
-                     key=lambda x: Cards[x[0]],
+                     key=lambda x: [Cards[c] for c in x],
                      reverse=True)
   for hand in hand_type:
     sorted_list.append(hand)
 
 sorted_list.reverse()
 enumerated_list = list(enumerate(sorted_list, 1))
-for i in enumerated_list:
-  print(i)
 sum = 0
 for hand in enumerated_list:
   sum += hand[0] * Bids.get(hand[1])
