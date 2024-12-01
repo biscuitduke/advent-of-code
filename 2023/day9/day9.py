@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+ #!/usr/bin/python3
 f = open('example', 'r')
 total = 0
 difference = []
